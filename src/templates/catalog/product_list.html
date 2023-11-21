@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}
+Статьи
+{% endblock %}
+
+{% block breadcrumps %}
+<ul class="uk-breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a href="/" itemprop="item">
+            <span itemprop="name">Каталог</span>
+            <meta itemprop="position" content="0">
+        </a>
+    </li>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <span itemprop="item">
+            <span itemprop="name">Товары</span>
+            <meta itemprop="position" content="2">
+        </span>
+    </li>
+</ul>
+{% endblock %}
+
+
+{% block content %}
+<h1 class="mt-3 mb-3">Товары</h1>
+
+
+<div uk-grid>
+    <div class="uk-width-1-4@m">
+        {% include "catalog/include/product_category_filter.html" %}
+    </div>
+
+    <div class="uk-width-3-4@m">
+        <div class="uk-child-width-1-2@m uk-child-width-1-4@xl" uk-grid uk-height-match="target: > div > .uk-card">
+
+            {% for p in product_list.object_list  %}
+
+            {% include "catalog/include/product_card.html" %}
+
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

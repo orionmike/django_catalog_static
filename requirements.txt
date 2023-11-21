@@ -1,0 +1,5 @@
+Django==4.2.6
+django_import_export==3.3.1
+django_mptt==0.15.0
+Faker==19.11.0
+python-slugify==8.0.1

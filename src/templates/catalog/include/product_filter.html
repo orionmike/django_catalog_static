@@ -1,0 +1,58 @@
+<div class="filter">
+
+    <form action="{% url 'product_list_filter_json' %}" name="filter-json" method="get">
+
+        <input type="hidden" name="filter" value="on">
+
+        {% if product_list %}
+
+        <div class="uk-margin">
+            <h4>Цена</h4>
+            <input class="uk-input uk-form-width-small" type="number" id="volume" name="price_min" value="{{price.price__min}}" /> —
+            <input class="uk-input uk-form-width-small" type="number" id="volume" name="price_max" value="{{price.price__max}}" />
+        </div>
+        {% endif %}
+
+        <div class="uk-margin">
+            <h4>Форма</h4>
+            {% for shape in product_shape_list %}
+            <input type="checkbox" id="shape-{{shape.pk}}" name="shape" value="{{ shape.pk }}">
+            <label for="shape-{{shape.pk}}">{{ shape.title }}</label><br>
+            {% endfor %}
+        </div>
+
+        <div class="uk-margin">
+            <h4>Металл</h4>
+            {% for metal in product_metal_list %}
+            <input type="checkbox" id="metal-{{metal.pk}}" name="metal" value="{{ metal.pk }}">
+            <label for="metal-{{metal.pk}}">{{ metal.title }}</label><br>
+            {% endfor %}
+        </div>
+
+        <button class="uk-button uk-button-primary uk-button-small">Отправить</button>
+
+    </form>
+
+    {% load static %}
+
+    <script src="{% static 'js/hogan-3.0.2.min.js' %}"></script>
+    <script src="{% static 'js/ajax-filter.js' %}"></script>
+
+    <script>
+
+        const urlParams = new URLSearchParams(window.location.search)
+
+        const shapeList = urlParams.getAll('shape')
+        // console.log(shapeList)
+        shapeList.forEach((element) =>
+            document.getElementById('shape-'+element).checked = true
+            )
+
+        const metalList = urlParams.getAll('metal')
+        // console.log(metalList)
+        metalList.forEach((element) =>
+            document.getElementById('metal-'+element).checked = true
+            )
+    </script>
+
+</div>

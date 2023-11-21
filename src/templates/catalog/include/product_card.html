@@ -1,0 +1,29 @@
+<div>
+    <div class="uk-card uk-card-default">
+        <div class="uk-card-header">
+            <h3 class="uk-margin-remove"><a href="{{ p.get_absolute_url }}">{{ p.title }}</a></h3>
+            {{ p.date_update }}
+
+            {% comment "tag list" %}
+            <div>
+                {% for t in p.tag_list.all %}
+                    <a class="uk-label uk-label-success" href="{{ t.get_absolute_url }}">{{ t.title }}</a>
+                {% endfor %}
+            </div>
+            {% endcomment %}
+        </div>
+
+        <div class="uk-card-body">
+            <div class="uk-h3"><b>{{p.price}}</b> руб.</div>
+            {% comment %}
+                <p>{{ p.preview_text }}</p>
+            {% endcomment %}
+
+        </div>
+        {% comment %}
+        <div class="uk-card-footer">
+            <div><a class="uk-button uk-button-primary" href="{{ p.get_absolute_url }}">Подробнее</a></div>
+        </div>
+        {% endcomment %}
+    </div>
+</div>

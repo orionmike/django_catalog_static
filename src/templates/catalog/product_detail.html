@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}
+    {{ product.title }}
+{% endblock %}
+
+
+{% block breadcrumps %}
+<ul class="uk-breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a href="/" itemprop="item">
+            <span itemprop="name">Каталог</span>
+            <meta itemprop="position" content="0">
+        </a>
+    </li>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <span itemprop="item">
+            <span itemprop="name">{{ product.title }}</span>
+            <meta itemprop="position" content="2">
+        </span>
+    </li>
+</ul>
+{% endblock %}
+
+
+{% block content %}
+
+    <h1>{{ product.title }}</h1>
+
+    <p class="uk-h3">
+        Цена: <b>{{ product.price }}</b><br>
+        Форма: {{ product.product_shape.title }}<br>
+        Металл: {{ product.product_metal_list.all|join:", " }}
+    </p>
+
+    <p>{{ product.date_update }}</p>
+
+    {% comment "tag list" %}
+        <p>
+            {% for t in product.tag_list.all %}
+                <a class="uk-label uk-label-success" href="{{ t.get_absolute_url }}">{{ t.title }}</a>
+            {% endfor %}
+        </p>
+    {% endcomment %}
+
+    <p>{{ product.preview_text }}</p>
+    <p>{{ product.full_text }}</p>
+
+{% endblock %}
