@@ -1,0 +1,58 @@
+<nav class="uk-container uk-container-expand uk-background-muted" uk-navbar>
+
+    <div class="uk-navbar-left">
+        <a class="uk-navbar-item uk-logo" href="/" aria-label="logo">logo</a>
+    </div>
+
+    <div class="uk-navbar-right uk-hidden@s">
+
+        <a class="uk-navbar-toggle mk-text-white" uk-toggle="target: #offcanvas-flip" uk-navbar-toggle-icon></a>
+
+        <div id="offcanvas-flip" uk-offcanvas="flip: true; overlay: true">
+            <div class="uk-offcanvas-bar bg-color-link">
+                <button class="uk-offcanvas-close" type="button" uk-close></button>
+
+                <ul class="uk-list">
+                    <li>
+                        <a href="{% url 'category_list' %}">Каталог</a>
+                    </li>
+
+                    {% comment "tag item menu" %}
+                    <li>
+                        <a href="{% url 'tag_list' %}">Теги</a>
+                    </li>
+                    {% endcomment %}
+
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="uk-navbar-left uk-visible@s">
+
+        <ul class="uk-navbar-nav">
+
+            <li>
+                <a href="{% url 'category_list' %}">Каталог</a>
+            </li>
+
+            {% comment "tag item menu" %}
+            <li>
+                <a href="{% url 'tag_list' %}">Теги</a>
+            </li>
+            {% endcomment %}
+
+        </ul>
+
+        <div class="uk-navbar-item">
+            <form action="{% url 'search_product' %}" class="uk-search uk-search-default">
+                <a href="" class="uk-search-icon-flip" uk-search-icon></a>
+                <input class="uk-search-input" type="search" name="search" placeholder="Поиск" aria-label="Search">
+            </form>
+        </div>
+
+    </div>
+
+</nav>

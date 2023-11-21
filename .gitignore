@@ -28,7 +28,3 @@ src/logs/
 *.zip
 *.exe
 *.xlsx
-
-
-# config
-config.toml

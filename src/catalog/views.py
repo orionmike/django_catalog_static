@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import View
 
+from config.settings import PAGINATE_BY
+
 from .mixins import *
 from .filter import get_query_category_filter_list
 from ._utils.utils import get_pagination
